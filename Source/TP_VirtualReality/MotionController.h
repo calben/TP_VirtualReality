@@ -5,6 +5,14 @@
 #include "GameFramework/Actor.h"
 #include "MotionController.generated.h"
 
+UENUM(BlueprintType)
+enum class EGripState : uint8
+{
+	Open,
+	CanGrab,
+	Grab
+};
+
 UCLASS()
 class TP_VIRTUALREALITY_API AMotionController : public AActor
 {
@@ -25,6 +33,9 @@ public:
 
 	//UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	//	class UMotionControllerComponent* MotionController;
+
+
+///////////////////
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 		class USkeletalMeshComponent* HandMesh;
@@ -52,6 +63,44 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 		class UStaticMeshComponent* RoomScaleMesh;
+
+	////////////////////
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+		AActor* AttachedActor;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+		bool bIsTeleporterActive;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+		TArray<class USplineMeshComponent*> SplineMeshes;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+		bool bLastFrameValidDestination;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+		bool bIsRoomScale;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+		FVector TeleportDestination;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+		bool bIsValidTeleportDestination;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+		EGripState GripState;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+		bool bWantsToGrip;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+		FRotator TeleportRotation;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+		float TeleportLaunchVelocity;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+		FRotator InitialControllerRotation;
 
 	//UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	//	class USteamVRChaperoneComponent* SteamVRChaperone;
