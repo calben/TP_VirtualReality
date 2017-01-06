@@ -53,7 +53,17 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 		class UStaticMeshComponent* RoomScaleMesh;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-		class USteamVRChaperoneComponent* SteamVRChaperone;
+	//UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	//	class USteamVRChaperoneComponent* SteamVRChaperone;
+
+	UFUNCTION(BlueprintCallable, Category = Grabbing)
+		AActor* GetActorNearHand();
+
+	UFUNCTION(BlueprintCallable, Category = Grabbing)
+		void ReleaseActor();
+
+	UFUNCTION(BlueprintCallable, Category = Grabbing)
+		void GrabActor();
+
 
 };

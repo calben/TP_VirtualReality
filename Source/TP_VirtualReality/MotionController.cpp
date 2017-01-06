@@ -7,7 +7,7 @@
 // Sets default values
 AMotionController::AMotionController()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 }
@@ -16,13 +16,28 @@ AMotionController::AMotionController()
 void AMotionController::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 }
 
 // Called every frame
-void AMotionController::Tick( float DeltaTime )
+void AMotionController::Tick(float DeltaTime)
 {
-	Super::Tick( DeltaTime );
+	Super::Tick(DeltaTime);
+
+}
+
+AActor* AMotionController::GetActorNearHand()
+{
+	return nullptr;
+}
+
+void AMotionController::ReleaseActor()
+{
+
+}
+
+void AMotionController::GrabActor()
+{
 
 }
 
