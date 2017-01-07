@@ -38,6 +38,12 @@ void AMotionController::ReleaseActor()
 
 void AMotionController::GrabActor()
 {
-	
+	bWantsToGrip = true;
+	AActor* Nearest = GetActorNearHand();
+	if (Nearest)
+	{
+		AttachedActor = Nearest;
+		Nearest->AttachToComponent(Scene);
+	}
 }
 
