@@ -3,7 +3,7 @@
 #pragma once
 
 #include "GameFramework/Actor.h"
-#include "MotionController.generated.h"
+#include "UserMotionController.generated.h"
 
 UENUM(BlueprintType)
 enum class EGripState : uint8
@@ -14,13 +14,13 @@ enum class EGripState : uint8
 };
 
 UCLASS()
-class TP_VIRTUALREALITY_API AMotionController : public AActor
+class TP_VIRTUALREALITY_API AUserMotionController : public AActor
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this actor's properties
-	AMotionController();
+	AUserMotionController();
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -31,11 +31,11 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 		class USceneComponent* Scene;
 
-	//UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	//	class UMotionControllerComponent* MotionController;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+		class UMotionControllerComponent* MotionController;
 
 
-///////////////////
+	///////////////////
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 		class USkeletalMeshComponent* HandMesh;
@@ -102,8 +102,8 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 		FRotator InitialControllerRotation;
 
-	//UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	//	class USteamVRChaperoneComponent* SteamVRChaperone;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+		class USteamVRChaperoneComponent* SteamVRChaperone;
 
 	UFUNCTION(BlueprintCallable, Category = Grabbing)
 		AActor* GetActorNearHand();
@@ -113,6 +113,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = Grabbing)
 		void GrabActor();
+
 
 
 };
