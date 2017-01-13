@@ -13,6 +13,24 @@ enum class EGripState : uint8
 	Grab
 };
 
+USTRUCT(BlueprintType)
+struct FTraceTeleportDestinationResult
+{
+	GENERATED_BODY()
+
+		UPROPERTY()
+		bool bSuccess;
+
+	UPROPERTY()
+		TArray<FVector> TracePoints;
+
+	UPROPERTY()
+		FVector NavMeshLocation;
+
+	UPROPERTY()
+		FVector TraceLocation;
+};
+
 UCLASS()
 class TP_VIRTUALREALITY_API AUserMotionController : public AActor
 {
@@ -31,7 +49,7 @@ public:
 	///////////////////
 	// COMPONENTS
 	///////////////////
-	
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 		class USceneComponent* Scene;
 
@@ -128,19 +146,19 @@ public:
 		void DisableTeleporter();
 
 	UFUNCTION(BlueprintCallable, Category = Teleportation)
-		void TraceTeleportDestination();
+		FTraceTeleportDestinationResult TraceTeleportDestination();
 
 	UFUNCTION(BlueprintCallable, Category = Teleportation)
 		void ClearArc();
 
 	UFUNCTION(BlueprintCallable, Category = Teleportation)
-		void UpdateArcSpline();
+		void UpdateArcSpline(bool bFoundValidLocation, TArray<FVector> SplinePoints);
 
 	UFUNCTION(BlueprintCallable, Category = Teleportation)
-		void UpdateArcEndpoint();
+		void UpdateArcEndpoint(FVector NewLocation, bool bValidLocationFound);
 
 	UFUNCTION(BlueprintCallable, Category = Teleportation)
-		void GetTeleportDestination();
+		FTransform GetTeleportDestination();
 
 	UFUNCTION(BlueprintCallable, Category = RoomsScale)
 		void SetupRoomScaleOutline();
