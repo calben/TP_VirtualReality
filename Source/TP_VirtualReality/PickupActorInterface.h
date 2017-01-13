@@ -18,7 +18,6 @@ class TP_VIRTUALREALITY_API IPickupActorInterface
 {
 	GENERATED_IINTERFACE_BODY()
 
-		// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category = Pickup)

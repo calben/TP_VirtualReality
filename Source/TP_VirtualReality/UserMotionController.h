@@ -28,14 +28,15 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaSeconds) override;
 
+	///////////////////
+	// COMPONENTS
+	///////////////////
+	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 		class USceneComponent* Scene;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 		class UMotionControllerComponent* MotionController;
-
-
-	///////////////////
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 		class USkeletalMeshComponent* HandMesh;
@@ -64,6 +65,8 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 		class UStaticMeshComponent* RoomScaleMesh;
 
+	////////////////////
+	// Variables
 	////////////////////
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
@@ -105,6 +108,10 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 		class USteamVRChaperoneComponent* SteamVRChaperone;
 
+	////////////////////
+	// EXPOSED FUNCTIONS
+	////////////////////
+
 	UFUNCTION(BlueprintCallable, Category = Grabbing)
 		AActor* GetActorNearHand();
 
@@ -114,6 +121,37 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Grabbing)
 		void GrabActor();
 
+	UFUNCTION(BlueprintCallable, Category = Teleportation)
+		void ActivateTeleporter();
 
+	UFUNCTION(BlueprintCallable, Category = Teleportation)
+		void DisableTeleporter();
+
+	UFUNCTION(BlueprintCallable, Category = Teleportation)
+		void TraceTeleportDestination();
+
+	UFUNCTION(BlueprintCallable, Category = Teleportation)
+		void ClearArc();
+
+	UFUNCTION(BlueprintCallable, Category = Teleportation)
+		void UpdateArcSpline();
+
+	UFUNCTION(BlueprintCallable, Category = Teleportation)
+		void UpdateArcEndpoint();
+
+	UFUNCTION(BlueprintCallable, Category = Teleportation)
+		void GetTeleportDestination();
+
+	UFUNCTION(BlueprintCallable, Category = RoomsScale)
+		void SetupRoomScaleOutline();
+
+	UFUNCTION(BlueprintCallable, Category = RoomsScale)
+		void UpdateRoomScaleOutline();
+
+private:
+
+	void UpdateHandAnimation();
+
+	void HandleTeleportationArc();
 
 };
