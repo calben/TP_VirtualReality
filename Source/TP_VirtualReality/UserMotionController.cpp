@@ -65,3 +65,49 @@ void AUserMotionController::GrabActor()
 		Nearest->AttachToComponent(Scene, FAttachmentTransformRules::KeepWorldTransform);
 	}
 }
+
+void AUserMotionController::ActivateTeleporter()
+{
+}
+
+void AUserMotionController::DisableTeleporter()
+{
+}
+
+FTraceTeleportDestinationResult AUserMotionController::TraceTeleportDestination()
+{
+	return FTraceTeleportDestinationResult();
+}
+
+void AUserMotionController::ClearArc()
+{
+}
+
+void AUserMotionController::UpdateArcSpline(bool bFoundValidLocation, TArray<FVector> SplinePoints)
+{
+}
+
+void AUserMotionController::UpdateArcEndpoint(FVector NewLocation, bool bValidLocationFound)
+{
+}
+
+FTransform AUserMotionController::GetTeleportDestination()
+{
+	return FTransform(FVector::ZeroVector);
+}
+
+void AUserMotionController::SetupRoomScaleOutline()
+{
+}
+
+void AUserMotionController::UpdateRoomScaleOutline()
+{
+}
+
+void AUserMotionController::UpdateHandAnimation()
+{
+}
+
+void AUserMotionController::HandleTeleportationArc()
+{
+}
