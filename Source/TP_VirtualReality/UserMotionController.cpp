@@ -3,6 +3,9 @@
 #include "TP_VirtualReality.h"
 #include "PickupActorInterface.h"
 #include "UserMotionController.h"
+#include "SteamVRChaperoneComponent.h"
+#include "Kismet/KismetMathLibrary.h"
+#include "MotionControllerComponent.h"
 
 
 // Sets default values
@@ -68,6 +71,10 @@ void AUserMotionController::GrabActor()
 
 void AUserMotionController::ActivateTeleporter()
 {
+	bIsTeleporterActive = true;
+	TeleportCylinder->SetVisibility(true, true);
+	RoomScaleMesh->SetVisibility(bIsRoomScale, false);
+	MotionController->GetComponentRotation();
 }
 
 void AUserMotionController::DisableTeleporter()
@@ -94,14 +101,6 @@ void AUserMotionController::UpdateArcEndpoint(FVector NewLocation, bool bValidLo
 FTransform AUserMotionController::GetTeleportDestination()
 {
 	return FTransform(FVector::ZeroVector);
-}
-
-void AUserMotionController::SetupRoomScaleOutline()
-{
-}
-
-void AUserMotionController::UpdateRoomScaleOutline()
-{
 }
 
 void AUserMotionController::UpdateHandAnimation()

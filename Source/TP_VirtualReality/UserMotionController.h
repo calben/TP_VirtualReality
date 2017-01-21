@@ -160,11 +160,11 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Teleportation)
 		FTransform GetTeleportDestination();
 
-	UFUNCTION(BlueprintCallable, Category = RoomsScale)
-		void SetupRoomScaleOutline();
+	//UFUNCTION(BlueprintCallable, Category = RoomsScale)
+	//	void SetupRoomScaleOutline();
 
-	UFUNCTION(BlueprintCallable, Category = RoomsScale)
-		void UpdateRoomScaleOutline();
+	//UFUNCTION(BlueprintCallable, Category = RoomsScale)
+	//	void UpdateRoomScaleOutline();
 
 private:
 
