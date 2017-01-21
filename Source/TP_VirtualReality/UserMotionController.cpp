@@ -79,6 +79,14 @@ void AUserMotionController::ActivateTeleporter()
 
 void AUserMotionController::DisableTeleporter()
 {
+	if (bIsTeleporterActive)
+	{
+		bIsTeleporterActive = false;
+		TeleportCylinder->SetVisibility(false, true);
+		RoomScaleMesh->SetVisibility(false, false);
+		ArcEndPoint->SetVisibility(false, true);
+		MotionController->GetComponentRotation();
+	}
 }
 
 FTraceTeleportDestinationResult AUserMotionController::TraceTeleportDestination()
